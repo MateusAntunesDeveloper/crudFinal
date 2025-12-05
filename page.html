@@ -3,83 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StyleStore - Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>UrbanStyleStore - Loja de Roupas</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="login-container">
-            <div class="brand-section">
-                <h1 class="brand-name">StyleStore</h1>
-                <p class="brand-tagline">Sua moda, seu estilo</p>
+    <!-- Cabeçalho com informações do usuário logado -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-tshirt"></i> UrbanStyleStore</h1>
+                <p class="tagline">Roupas e Bonés com Estilo</p>
+            </div>
+            <!-- No user-actions do header, adicione este link APÓS o link de Favoritos -->
+<a href="account.html" class="btn-icon" title="Minha Conta" style="margin-right: 10px;">
+    <i class="fas fa-user"></i>
+</a>
+            
+            <div class="user-info">
+                <div class="user-greeting">
+                    <i class="fas fa-user-circle"></i>
+                    <div>
+                        <p class="welcome">Bem-vindo de volta</p>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <a href="#" class="btn-icon" title="Carrinho">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">3</span>
+                    </a>
+                    <a href="#" class="btn-icon" title="Favoritos">
+                        <i class="fas fa-heart"></i>
+                    </a>
+                    <a href="#" class="btn-logout" title="Sair">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barra de navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#"><i class="fas fa-tshirt"></i> Roupas</a></li>
+                <li><a href="#"><i class="fas fa-hat-cowboy"></i> Bonés</a></li>
+                <li><a href="#"><i class="fas fa-fire"></i> Ofertas</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Histórico</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Minha Conta</a></li>
+            </ul>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar produtos...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Seção de destaques -->
+            <section class="highlights">
+                <h2><i class="fas fa-star"></i> Destaques para Você</h2>
+                <div class="highlight-cards">
+                    <div class="highlight-card">
+                        <div class="highlight-badge">Novidade</div>
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Camiseta Premium">
+                        <div class="highlight-info">
+                            <h3>Coleção Verão</h3>
+                            <p>Camisetas leves e confortáveis para o calor</p>
+                            <a href="#" class="btn">Ver Coleção</a>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-badge">Oferta</div>
+                        <img src="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Boné Esportivo">
+                        <div class="highlight-info">
+                            <h3>Bonés Exclusivos</h3>
+                            <p>Proteção e estilo para qualquer ocasião</p>
+                            <a href="#" class="btn">Comprar Agora</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção de produtos recomendados -->
+            <section class="recommended">
+                <div class="section-header">
+                    <h2><i class="fas fa-thumbs-up"></i> Recomendados para Você</h2>
+                    <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Camiseta Básica">
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Camiseta</span>
+                            <h3 class="product-title">Camiseta Básica Preta</h3>
+                            <p class="product-description">Confortável e versátil para o dia a dia.</p>
+                            <div class="product-price">
+                                <span class="current-price">R$ 49,90</span>
+                                <span class="original-price">R$ 59,90</span>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Adicionar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Boné Trucker">
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Boné</span>
+                            <h3 class="product-title">Boné Trucker Azul</h3>
+                            <p class="product-description">Estilo retrô com frente curva.</p>
+                            <div class="product-price">
+                                <span class="current-price">R$ 79,90</span>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Adicionar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Jaqueta Jeans">
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Jaqueta</span>
+                            <h3 class="product-title">Jaqueta Jeans Claro</h3>
+                            <p class="product-description">Perfeita para looks casuais.</p>
+                            <div class="product-price">
+                                <span class="current-price">R$ 129,90</span>
+                                <span class="original-price">R$ 149,90</span>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Adicionar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1588850561275-8c0f49b8b7b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Boné Snapback">
+                            <button class="favorite-btn"><i class="fas fa-heart"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Boné</span>
+                            <h3 class="product-title">Boné Snapback Vermelho</h3>
+                            <p class="product-description">Ajuste fácil e design moderno.</p>
+                            <div class="product-price">
+                                <span class="current-price">R$ 89,90</span>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção de ofertas especiais -->
+            <section class="special-offers">
+                <h2><i class="fas fa-bolt"></i> Ofertas Relâmpago</h2>
+                <div class="offer-timer">
+                    <p>A oferta termina em: <span class="timer">02:15:33</span></p>
+                </div>
+                <div class="offer-products">
+                    <div class="offer-product">
+                        <div class="offer-badge">-30%</div>
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Camiseta Branca">
+                        <h4>Camiseta Básica Branca</h4>
+                        <div class="offer-price">
+                            <span class="current-price">R$ 41,93</span>
+                            <span class="original-price">R$ 59,90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="offer-product">
+                        <div class="offer-badge">-20%</div>
+                        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Boné Trucker">
+                        <h4>Boné Trucker Preto</h4>
+                        <div class="offer-price">
+                            <span class="current-price">R$ 63,92</span>
+                            <span class="original-price">R$ 79,90</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>UrbanStyle</h3>
+                    <p>Roupas e bonés com qualidade e estilo para todos os momentos.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Minha Conta</a></li>
+                        <li><a href="#">Meus Pedidos</a></li>
+                        <li><a href="#">Favoritos</a></li>
+                        <li><a href="#">Carrinho</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Ajuda</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Política de Trocas</a></li>
+                        <li><a href="#">Entregas</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Receba ofertas exclusivas no seu e-mail.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
             </div>
             
-            <form class="login-form">
-                <h2>Faça seu login</h2>
-                
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        placeholder="seu@email.com"
-                        required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        placeholder="Sua senha"
-                        required>
-                </div>
-                
-                <div class="form-options">
-                    <label class="remember-me">
-                        <input type="checkbox">
-                        Lembrar-me
-                    </label>
-                    <a href="#" class="forgot-password">Esqueci minha senha</a>
-                </div>
-                
-                <button type="submit" class="login-btn">Entrar</button>
-                
-                <div class="divider">
-                    <span>ou</span>
-                </div>
-                
-                <button type="button" class="social-btn google-btn">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2LjUxIDkuMjA0NTVWOS4wOTU0NUgOVi4wOTU0NTZIMTYuNTFDMTcuODcgMi4wNDU0NSA5IDkuMjA0NTUgOSA5LjIwNDU1WiIgZmlsbD0iIzQyODVGMyIvPgo8cGF0aCBkPSJNMSAyLjU0NTQ1QzIuMDkgMS4wOTU0NSAzLjY4IDAuMDk1NDU2IDUuNSAwLjA5NTQ1NkM3LjgyIDAuMDk1NDU2IDkuNzMgMS4zNDU0NSAxMC43NSAzLjA5NTQ1TDEzLjI1IDAuNTk1NDU2QzExLjU5IC0xLjUwNDU1IDguNzIgLTIuOTA0NTUgNS41IC0yLjkwNDU1QzIuMzggLTIuOTA0NTUgLTAuMzkgLTEuNjA0NTUgMSAyLjU0NTQ1WiIgZmlsbD0iIzM0QTgzOCIvPgo8cGF0aCBkPSJNNS41IDE4LjA5NTRDMy42OCAxOC4wOTU0IDIuMDkgMTcuMDk1NCAxIDE1LjY0NTRDMi4zOSAxMy4xOTU0IDUuNSAxMS4wOTU0IDUuNSAxMS4wOTU0QzYuNSAxMi4wOTU0IDguMTggMTMuNTk1NCA4LjE4IDEzLjU5NTRDMTEuMDkgMTEuMDk1NCAxMy4yNSAxMC4wOTU0IDEzLjI1IDEwLjA5NTRDMTMuMjUgMTEuMDk1NCAxMy4yNSAxMy4wOTU0IDEzLjI1IDE0LjA5NTRDMTMuMjUgMTYuMDk1NCAxMS41OSAxOC4wOTU0IDUuNSAxOC4wOTU0WiIgZmlsbD0iI0ZCQkMwNCIvPgo8cGF0aCBkPSJNMTYgMTUuMDk1NEMxNiAxNy4wOTU0IDE0LjM0IDE4LjA5NTQgOS4yNSAxOC4wOTU0QzQuMTYgMTguMDk1NCAxLjUgMTcuMDk1NCAxLjUgMTUuMDk1NEMxLjUgMTMuMDk1NCAzLjE2IDEyLjA5NTQgOC4yNSAxMi4wOTU0QzEzLjM0IDEyLjA5NTQgMTYgMTMuMDk1NCAxNiAxNS4wOTU0WiIgZmlsbD0iIzM0QTgzOCIvPgo8L3N2Zz4K" alt="Google">
-                    Continuar com Google
-                </button>
-                
-                <p class="signup-link">
-                    Não tem uma conta? <a href="#">Cadastre-se</a>
-                </p>
-            </form>
-        </div>
-        
-        <div class="hero-section">
-            <div class="hero-content">
-                <h2>Bem-vindo de volta!</h2>
-                <p>Descubra as últimas tendências da moda e renove seu guarda-roupa.</p>
-                <div class="features">
-                    <div class="feature">
-                        <span>🛍️</span>
-                        <span>Frete grátis acima de R$ 199</span>
-                    </div>
-                    <div class="feature">
-                        <span>🎁</span>
-                        <span>Primeira compra com 15% off</span>
-                    </div>
-                    <div class="feature">
-                        <span>🔒</span>
-                        <span>Compra 100% segura</span>
-                    </div>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 UrbanStyle. Todos os direitos reservados.</p>
             </div>
         </div>
-    </div>
+    </footer>
 </body>
 </html>
