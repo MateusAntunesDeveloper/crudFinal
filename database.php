@@ -1,20 +1,19 @@
 <?php
-class Database {
-    private $host = "localhost";
-    private $db_name = "loja_roupas";
-    private $username = "root";
-    private $password = "";
-    public $conn;
+$host = 'localhost';
+$db   = 'products';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
 
-    public function getConnection() {
-        $this->conn = null;
-        try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-            $this->conn->exec("set names utf8");
-        } catch(PDOException $exception) {
-            echo "Erro de conexão: " . $exception->getMessage();
-        }
-        return $this->conn;
-    }
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+];
+
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    echo json_encode(['sucesso'=>false,'erro'=>'Falha na conexão com o banco: '.$e->getMessage()]);
+    exit;
 }
-?>
